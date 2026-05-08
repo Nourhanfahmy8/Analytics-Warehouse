@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{206F049E-E5BD-407A-8782-013D679B5507}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{60165921-CAFB-4BB6-83E7-A9E226977B86}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,18 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DESKTOP-6UQ7UMH;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{F946EA7B-8377-4194-B287-0FA2D760A90B}DESKTOP-6UQ7UMH.BikeStore_STG;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AF961EE2-4AAE-4B9E-9E38-FD4BD1B75BF6}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{AF961EE2-4AAE-4B9E-9E38-FD4BD1B75BF6}DESKTOP-PKFFJFA.BikeStore_DWH;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -127,8 +139,8 @@ where [refTable].[Store_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Geography\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -273,8 +285,8 @@ where [refTable].[Store_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Geography\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -625,12 +637,12 @@ FROM STG_stores</property>
           Id="Package\Load Dim_Geography\OLE DB Source"
           TopLeft="293,84" />
         <NodeLayout
-          Size="113.333333333334,42"
+          Size="114.666666666667,42.6666666666667"
           Id="Package\Load Dim_Geography\Lookup"
           TopLeft="310,189" />
         <EdgeLayout
           Id="Package\Load Dim_Geography.Paths[OLE DB Source Output]"
-          TopLeft="367.25,126">
+          TopLeft="367.666666666667,126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -652,25 +664,25 @@ FROM STG_stores</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Dim_Geography.Paths[Lookup No Match Output]"
-          TopLeft="365,231">
+          TopLeft="365.333333333333,231.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66"
+              EndConnector="0,65.3333333333333"
               Start="0,0"
-              End="0,58.5">
+              End="0,57.8333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.5" />
+                    End="0,57.8333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,23.4453125,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,23.1119791666667,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -704,7 +716,7 @@ FROM STG_stores</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -714,7 +726,7 @@ FROM STG_stores</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

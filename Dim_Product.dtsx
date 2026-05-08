@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="5/6/2026 2:17:42 AM"
@@ -11,21 +11,33 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{B505A775-DD98-4BD3-B80F-F985A64F50C8}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{6A62EBC0-EAEB-4B6B-AE0D-48F6F9896997}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{96DD8ED8-447E-41C4-886F-998358F5576E}"
-      DTS:ObjectName="DESKTOP-6UQ7UMH.BikeStore_STG">
+      DTS:DTSID="{FD9001B6-698B-4F13-8585-7129A4CA3973}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_DWH">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-6UQ7UMH;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{96DD8ED8-447E-41C4-886F-998358F5576E}DESKTOP-6UQ7UMH.BikeStore_STG;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{FD9001B6-698B-4F13-8585-7129A4CA3973}DESKTOP-PKFFJFA.BikeStore_DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B1BF8DED-664F-4176-87AE-D818C383AC8D}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{B1BF8DED-664F-4176-87AE-D818C383AC8D}DESKTOP-PKFFJFA.BikeStore_STG;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -245,8 +257,8 @@ where [refTable].[Product_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Product\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -421,8 +433,8 @@ WHERE ProductKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Product\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -548,8 +560,8 @@ WHERE ProductKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Product\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -725,8 +737,8 @@ WHERE ProductKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Product\OLE DB Destination 1.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -902,8 +914,8 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Product\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1083,7 +1095,7 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="165,42"
+          Size="165.333333333334,42"
           Id="Package\Load Dim_Product"
           TopLeft="130,92" />
       </GraphLayout>
@@ -1095,13 +1107,29 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="170.666666666667,42"
+          Id="Package\Load Dim_Product\OLE DB Destination"
+          TopLeft="216.25,274" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load Dim_Product\OLE DB Destination 1"
+          TopLeft="461,454.25" />
+        <NodeLayout
           Size="150,42"
           Id="Package\Load Dim_Product\OLE DB Source"
           TopLeft="369.444444444444,67.2222222222222" />
         <NodeLayout
-          Size="113,42"
+          Size="113.333333333334,42"
           Id="Package\Load Dim_Product\Lookup"
           TopLeft="386,153" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Load Dim_Product\OLE DB Command"
+          TopLeft="470.5,376" />
+        <NodeLayout
+          Size="162.666666666667,42"
+          Id="Package\Load Dim_Product\Check If Changed"
+          TopLeft="477,275.5" />
         <EdgeLayout
           Id="Package\Load Dim_Product.Paths[OLE DB Source Output]"
           TopLeft="443.472222222222,109.222222222222">
@@ -1124,10 +1152,28 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Load Dim_Product\OLE DB Destination"
-          TopLeft="216.25,274" />
+        <EdgeLayout
+          Id="Package\Load Dim_Product.Paths[OLE DB Command Output]"
+          TopLeft="552.25,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.25"
+              Start="0,0"
+              End="0,28.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Dim_Product.Paths[Lookup No Match Output]"
           TopLeft="425,195">
@@ -1164,10 +1210,6 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load Dim_Product\Check If Changed"
-          TopLeft="477,275.5" />
         <EdgeLayout
           Id="Package\Load Dim_Product.Paths[Lookup Match Output]"
           TopLeft="460,195">
@@ -1204,10 +1246,6 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Load Dim_Product\OLE DB Command"
-          TopLeft="470.5,376" />
         <EdgeLayout
           Id="Package\Load Dim_Product.Paths[Changed]"
           TopLeft="556,317.5">
@@ -1232,35 +1270,35 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Load Dim_Product\OLE DB Destination 1"
-          TopLeft="461,454.25" />
-        <EdgeLayout
-          Id="Package\Load Dim_Product.Paths[OLE DB Command Output]"
-          TopLeft="552.25,418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.25"
-              Start="0,0"
-              End="0,28.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Product\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Product\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_Product\OLE DB Source">
     <Properties>
@@ -1289,32 +1327,6 @@ JOIN STG_brands b ON p.brand_id = b.brand_id</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_Product\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_Product\OLE DB Destination 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

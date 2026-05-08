@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="5/6/2026 2:04:48 AM"
@@ -11,21 +11,33 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{2589C88C-057B-4167-BDF2-BC78C4F4F2EF}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6041D2AF-A9E6-454F-A56C-18BC4B04A0A8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{72D6F144-1FF8-4C9C-A5F7-EACFA63C0ED6}"
-      DTS:ObjectName="DESKTOP-6UQ7UMH.BikeStore_STG">
+      DTS:DTSID="{3187DC0C-F156-4B65-8AF4-19BD7E03AFBE}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_DWH">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-6UQ7UMH;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{72D6F144-1FF8-4C9C-A5F7-EACFA63C0ED6}DESKTOP-6UQ7UMH.BikeStore_STG;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3187DC0C-F156-4B65-8AF4-19BD7E03AFBE}DESKTOP-PKFFJFA.BikeStore_DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C2A17C71-6955-4671-9AA0-26B16EB30574}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C2A17C71-6955-4671-9AA0-26B16EB30574}DESKTOP-PKFFJFA.BikeStore_STG;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -233,8 +245,8 @@ where [refTable].[Staff_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Staff\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -394,8 +406,8 @@ WHERE StaffKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Staff\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -521,8 +533,8 @@ WHERE StaffKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Staff\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -686,8 +698,8 @@ WHERE StaffKey = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Staff\OLE DB Destination 1.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -851,8 +863,8 @@ FROM STG_staffs</property>
               <connections>
                 <connection
                   refId="Package\Load Dim_Staff\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1011,7 +1023,7 @@ FROM STG_staffs</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151,42"
+          Size="150.666666666667,42"
           Id="Package\Load Dim_Staff"
           TopLeft="211,115" />
       </GraphLayout>
@@ -1023,11 +1035,27 @@ FROM STG_staffs</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="166,42"
+          Id="Package\Load Dim_Staff\OLE DB Command"
+          TopLeft="438.787878787879,369.191919191919" />
+        <NodeLayout
           Size="150,42"
           Id="Package\Load Dim_Staff\OLE DB Source"
           TopLeft="321.111111111111,70.8888888888889" />
         <NodeLayout
-          Size="113,42"
+          Size="170.666666666667,42"
+          Id="Package\Load Dim_Staff\OLE DB Destination"
+          TopLeft="162.313131313131,281.090909090909" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load Dim_Staff\OLE DB Destination 1"
+          TopLeft="434.242424242424,447.979797979798" />
+        <NodeLayout
+          Size="154.666666666667,42"
+          Id="Package\Load Dim_Staff\Conditional Split"
+          TopLeft="445.858585858586,275.959595959596" />
+        <NodeLayout
+          Size="113.333333333334,42"
           Id="Package\Load Dim_Staff\Lookup"
           TopLeft="342.444444444445,166" />
         <EdgeLayout
@@ -1052,10 +1080,28 @@ FROM STG_staffs</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Load Dim_Staff\OLE DB Destination"
-          TopLeft="162.313131313131,281.090909090909" />
+        <EdgeLayout
+          Id="Package\Load Dim_Staff.Paths[OLE DB Command Output]"
+          TopLeft="523.015151515152,411.191919191919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.7878787878788"
+              Start="0,0"
+              End="0,29.2878787878788">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2878787878788" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Dim_Staff.Paths[Lookup No Match Output]"
           TopLeft="381.444444444445,208">
@@ -1092,10 +1138,6 @@ FROM STG_staffs</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Load Dim_Staff\Conditional Split"
-          TopLeft="445.858585858586,275.959595959596" />
         <EdgeLayout
           Id="Package\Load Dim_Staff.Paths[Lookup Match Output]"
           TopLeft="416.444444444445,208">
@@ -1132,10 +1174,6 @@ FROM STG_staffs</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Load Dim_Staff\OLE DB Command"
-          TopLeft="438.787878787879,369.191919191919" />
         <EdgeLayout
           Id="Package\Load Dim_Staff.Paths[Changed]"
           TopLeft="522.573232323232,317.959595959596">
@@ -1160,61 +1198,12 @@ FROM STG_staffs</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Load Dim_Staff\OLE DB Destination 1"
-          TopLeft="434.242424242424,447.979797979798" />
-        <EdgeLayout
-          Id="Package\Load Dim_Staff.Paths[OLE DB Command Output]"
-          TopLeft="523.015151515152,411.191919191919">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.7878787878788"
-              Start="0,0"
-              End="0,29.2878787878788">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.2878787878788" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Dim_Staff\OLE DB Source">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Dim_Staff\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Staff]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1243,6 +1232,29 @@ FROM STG_staffs</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Staff\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Staff]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

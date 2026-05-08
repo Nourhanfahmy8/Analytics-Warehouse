@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="5/6/2026 8:36:01 AM"
@@ -11,11 +11,23 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Fact_Sales"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{BF2CA708-C55A-487F-93F9-AC44D7D8C62C}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{03564461-4576-4FD9-AA9C-13CDFB36FB68}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{75243C63-915A-4620-8DA2-36A84C39DAA6}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Fact_Sales-{75243C63-915A-4620-8DA2-36A84C39DAA6}DESKTOP-PKFFJFA.BikeStore_DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
       DTS:CreationName="OLEDB"
@@ -114,8 +126,8 @@ where [refTable].[Customer_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sales_Fact_Table\CustomerLU.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -271,8 +283,8 @@ where [refTable].[FullDate] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sales_Fact_Table\DateLU.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -374,18 +386,14 @@ where [refTable].[FullDate] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT g. LocationKey, s.store_id 
-FROM BikeStore_STG.dbo.STG_stores s
-JOIN BikeStore_STG.dbo.Dim_Geography g ON s.city = g.City AND s.state = g.State</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Geography]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT g. LocationKey, s.store_id 
-FROM BikeStore_STG.dbo.STG_stores s
-JOIN BikeStore_STG.dbo.Dim_Geography g ON s.city = g.City AND s.state = g.State) [refTable]
-where [refTable].[store_id] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Geography]) [refTable]
+where [refTable].[Store_Source_ID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -416,7 +424,7 @@ where [refTable].[store_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LocationKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="store_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LocationKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Store_Source_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Store_Name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="State" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Zip_Code" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -434,8 +442,8 @@ where [refTable].[store_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sales_Fact_Table\LocationLU.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -453,7 +461,7 @@ where [refTable].[store_id] = ?</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">store_id</property>
+                          name="JoinToReferenceColumn">Store_Source_ID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -580,8 +588,8 @@ where [refTable].[store_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sales_Fact_Table\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -618,29 +626,29 @@ where [refTable].[store_id] = ?</property>
                       externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
                       lineageId="Package\Sales_Fact_Table\DateLU.Outputs[Lookup Match Output].Columns[DateKey]" />
                     <inputColumn
-                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customer_id]"
-                      cachedDataType="i4"
-                      cachedName="customer_id"
-                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
-                      lineageId="Package\Sales_Fact_Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[customer_id]" />
-                    <inputColumn
-                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
-                      cachedDataType="i4"
-                      cachedName="product_id"
-                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
-                      lineageId="Package\Sales_Fact_Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]" />
-                    <inputColumn
-                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[store_id]"
-                      cachedDataType="i4"
-                      cachedName="store_id"
-                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
-                      lineageId="Package\Sales_Fact_Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[store_id]" />
-                    <inputColumn
                       refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Net_Revenue]"
                       cachedDataType="r8"
                       cachedName="Net_Revenue"
                       externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Net_Revenue]"
                       lineageId="Package\Sales_Fact_Table\OLE DB Source.Outputs[OLE DB Source Output].Columns[Net_Revenue]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Sales_Fact_Table\CustomerLU.Outputs[Lookup Match Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Sales_Fact_Table\ProductLU.Outputs[Lookup Match Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationKey]"
+                      cachedDataType="i4"
+                      cachedName="LocationKey"
+                      externalMetadataColumnId="Package\Sales_Fact_Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
+                      lineageId="Package\Sales_Fact_Table\LocationLU.Outputs[Lookup Match Output].Columns[LocationKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1029,8 +1037,8 @@ where [refTable].[Product_Source_ID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sales_Fact_Table\ProductLU.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1163,7 +1171,7 @@ where [refTable].[Product_Source_ID] = ?</property>
         <NodeLayout
           Size="168,42"
           Id="Package\Sales_Fact_Table"
-          TopLeft="140.5,28.5" />
+          TopLeft="309.249992456287,159.184209091429" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1173,13 +1181,29 @@ where [refTable].[Product_Source_ID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
+          Size="130.666666666667,42"
+          Id="Package\Sales_Fact_Table\ProductLU"
+          TopLeft="384,140" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Sales_Fact_Table\DateLU"
+          TopLeft="390,386" />
+        <NodeLayout
+          Size="177.333333333334,42"
+          Id="Package\Sales_Fact_Table\OLE DB Destination"
+          TopLeft="363,467" />
+        <NodeLayout
+          Size="157.333333333334,42"
           Id="Package\Sales_Fact_Table\OLE DB Source"
           TopLeft="370.5,67.5" />
         <NodeLayout
-          Size="131,42"
-          Id="Package\Sales_Fact_Table\ProductLU"
-          TopLeft="384,140" />
+          Size="141.333333333334,42"
+          Id="Package\Sales_Fact_Table\CustomerLU"
+          TopLeft="376,222" />
+        <NodeLayout
+          Size="134.666666666667,42"
+          Id="Package\Sales_Fact_Table\LocationLU"
+          TopLeft="375,306" />
         <EdgeLayout
           Id="Package\Sales_Fact_Table.Paths[OLE DB Source Output]"
           TopLeft="449.25,109.5">
@@ -1202,67 +1226,27 @@ where [refTable].[Product_Source_ID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Sales_Fact_Table\CustomerLU"
-          TopLeft="376,222" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Sales_Fact_Table\LocationLU"
-          TopLeft="375,306" />
-        <NodeLayout
-          Size="116,42"
-          Id="Package\Sales_Fact_Table\DateLU"
-          TopLeft="390,386" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Sales_Fact_Table\OLE DB Destination"
-          TopLeft="363,467" />
         <EdgeLayout
-          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output]"
-          TopLeft="449.75,428">
+          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output3]"
+          TopLeft="445.25,348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,31.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output1]"
-          TopLeft="448,182">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,9.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1291,45 +1275,56 @@ where [refTable].[Product_Source_ID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output3]"
-          TopLeft="445.25,348">
+          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output1]"
+          TopLeft="448,182">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="0,40"
               Start="0,0"
-              End="0,30.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Fact_Table.Paths[Lookup Match Output]"
+          TopLeft="449.75,428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sales_Fact_Table\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sales_Fact_Table\ProductLU">
     <Properties>
@@ -1342,52 +1337,6 @@ where [refTable].[Product_Source_ID] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Dim_Product]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sales_Fact_Table\CustomerLU">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Customer]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sales_Fact_Table\LocationLU">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -1432,6 +1381,65 @@ where [refTable].[Product_Source_ID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Fact_Table\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Fact_Table\CustomerLU">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Fact_Table\LocationLU">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Geography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

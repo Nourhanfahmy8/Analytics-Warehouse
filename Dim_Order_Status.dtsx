@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="5/6/2026 1:20:08 AM"
@@ -11,21 +11,33 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{512212BE-5321-4152-BE0B-D199F843A843}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{D54A5D19-E4C9-41E9-8808-8A0E3A5403F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{68CB8DD9-26B5-43B2-96F7-EA6AB3437F37}"
-      DTS:ObjectName="DESKTOP-6UQ7UMH.BikeStore_STG">
+      DTS:DTSID="{DC46F191-DF5F-4501-B3B2-11FD9B619052}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_DWH">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-6UQ7UMH;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{68CB8DD9-26B5-43B2-96F7-EA6AB3437F37}DESKTOP-6UQ7UMH.BikeStore_STG;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_DWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{DC46F191-DF5F-4501-B3B2-11FD9B619052}DESKTOP-PKFFJFA.BikeStore_DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{712097F8-15D5-4B63-ACD2-0932AB677893}"
+      DTS:ObjectName="DESKTOP-PKFFJFA.BikeStore_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-PKFFJFA;Initial Catalog=BikeStore_STG;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{712097F8-15D5-4B63-ACD2-0932AB677893}DESKTOP-PKFFJFA.BikeStore_STG;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -185,8 +197,8 @@
               <connections>
                 <connection
                   refId="Package\Load Dim_Order_Status\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_DWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -307,8 +319,8 @@
               <connections>
                 <connection
                   refId="Package\Load Dim_Order_Status\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6UQ7UMH.BikeStore_STG]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PKFFJFA.BikeStore_STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -392,7 +404,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="191,42"
+          Size="190.666666666667,42"
           Id="Package\Load Dim_Order_Status"
           TopLeft="146,102" />
       </GraphLayout>
@@ -407,6 +419,10 @@
           Size="150,42"
           Id="Package\Load Dim_Order_Status\OLE DB Source"
           TopLeft="261,49" />
+        <NodeLayout
+          Size="170.666666666667,42"
+          Id="Package\Load Dim_Order_Status\OLE DB Destination"
+          TopLeft="244,238" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Dim_Order_Status\Derived Column"
@@ -433,10 +449,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Load Dim_Order_Status\OLE DB Destination"
-          TopLeft="244,238" />
         <EdgeLayout
           Id="Package\Load Dim_Order_Status.Paths[Derived Column Output]"
           TopLeft="332.25,180">
